@@ -7,7 +7,7 @@ class EventBus
     @bindings[name] = [] unless @bindings[name]?
     @bindings[name].push(func)
 
-  fire_event: (name, args) ->
+  fire_event: (name, args = []) ->
     funcs = @bindings[name]
     return unless funcs?
     func.apply(func, args) for func in funcs

@@ -36,7 +36,7 @@ class StateMachine
     @previous_state = @current_state
     @current_state  = state_name
 
-  execute_transition:  (type, state_name, args) ->
+  execute_transition:  (type, state_name, args = []) ->
     bindings = if (type == @ENTER) then @enter_bindings else @exit_bindings
     func = bindings[state_name]
     func.apply(func, args) if func?
